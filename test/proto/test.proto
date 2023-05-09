@@ -1,0 +1,53 @@
+syntax = "proto3"; //声明proto的版本
+
+package zrpc; //作用域
+option cc_generic_services = true;
+
+message ResultCode
+{
+    int32 result = 1;
+    bytes errmsg = 2;
+}
+
+//登录请求
+message LoginReq
+{
+    bytes name = 1;
+    bytes pwd = 2;
+}
+message LoginAck
+{
+    ResultCode result = 1;
+    bool success = 2;
+}
+
+
+//User
+message User
+{
+    bytes name = 1;
+    uint32 age = 2;
+    enum Sex
+    {
+        MAN = 0;
+        WOMAN = 1;
+    }
+    Sex sex = 3;
+}
+
+//获取好友列表
+message GetFriendListsReq
+{
+    uint32 userid = 1;
+}
+message GetFriendListsAck
+{
+    ResultCode result = 1;
+    repeated User friend_lists = 2;
+}
+
+service UserServiceRpc
+{
+    rpc Login(LoginReq) returns(LoginAck);
+    rpc GetFriendLists(GetFriendListsReq) returns(GetFriendListsAck);
+}
