@@ -2,7 +2,7 @@
 #define __ZRPC_APPLICATION_H__
 #include <string>
 #include "zrpcconfig.h"
-
+#include "zrpccontroller.h"
 
 class ZrpcApplication
 {
