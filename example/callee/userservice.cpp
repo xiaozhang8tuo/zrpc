@@ -8,7 +8,7 @@
 /*
 UserService本地方法改造成一个rpc服务，供远程调用
 */
-class UserService : public zrpc::UserServiceRpc
+class UserService : public biz::UserServiceRpc
 {
 public:
     bool Login(std::string name, std::string pwd)
@@ -24,8 +24,8 @@ public:
     2. callee   ===>    Login(LoginReq)  => 交到下面重写的这个Login方法上了
     */
     void Login(::google::protobuf::RpcController* controller,
-                       const ::zrpc::LoginReq* request,
-                       ::zrpc::LoginAck* response,
+                       const ::biz::LoginReq* request,
+                       ::biz::LoginAck* response,
                        ::google::protobuf::Closure* done) override
     {
         //取参
@@ -55,6 +55,6 @@ int main(int argc, char** argv)
     provider.PubService(new UserService());
 
     //启动一个rpc服务发布节点   Run以后，进程进入阻塞状态，等待远程的rpc调用请求
-    //provider.Run();
+    provider.Run();
     return 0;
 }

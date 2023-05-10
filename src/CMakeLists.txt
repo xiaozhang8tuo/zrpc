@@ -1,6 +1,9 @@
 set(SRC_LIST 
     zrpcapplication.cpp
     zrpcprovider.cpp
+    zrpcconfig.cpp
+    zrpcheader.pb.cc
+    zrpcchannel.cpp
 )
 
 add_library(zrpc ${SRC_LIST})
