@@ -6,6 +6,7 @@ set(SRC_LIST
     zrpcchannel.cpp
     zrpccontroller.cpp
     zookeeperutil.cpp
+    util/logger.cpp
 )
 
 add_library(zrpc ${SRC_LIST})
