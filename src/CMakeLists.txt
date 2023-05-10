@@ -5,7 +5,8 @@ set(SRC_LIST
     zrpcheader.pb.cc
     zrpcchannel.cpp
     zrpccontroller.cpp
+    zookeeperutil.cpp
 )
 
 add_library(zrpc ${SRC_LIST})
-target_link_libraries(zrpc muduo_net muduo_base protobuf pthread)
+target_link_libraries(zrpc muduo_net muduo_base protobuf pthread zookeeper_mt)
